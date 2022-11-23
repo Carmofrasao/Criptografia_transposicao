@@ -38,7 +38,7 @@ int main(int argc, char * argv[]){
         perror("Erro na alocação de memoria");
         exit(-1);
     }
-    char * result = calloc(1/6, sb.st_size);
+    char * result = calloc(1, sb.st_size);
     if (!result){
         perror("Erro na alocação de memoria");
         exit(-1);
@@ -54,22 +54,67 @@ int main(int argc, char * argv[]){
         i++;
     };
 
-    // Descriptografando
-    for (int l = 0; l < i-3; l+=3){
-        if(texto[l] < 126 && texto[l] >= 33){
-            result[l] = texto[l+2];
-            result[l+2] = texto[l];
-        } else {
-            result[l] = texto[l];
-            result[l+2] = texto[l+2];
-        } 
+    int u, l;
+    // Criptografando
+    if(i%3==0){
+        u = i-1;
+
+        for (l = 0; l < i; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+        for (int z = 1; z < u; z+=3){
+            result[z] = texto[z];
+        }
+    }
+    else if(i%3==1){
+        u = i-2;
+
+        for (l = 0; l < u; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+
+        for (int z = 1; z < u; z+=3)
+            result[z] = texto[z];
+
+        l = (i / 3) * 3;
+        for (int h = l; h < i; h++)
+            result[h] = texto[h];
+        
+    }
+    else{ 
+        u = i-3;
+        for (l = 0; l < u; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+        for (int z = 1; z < u; z+=3)
+            result[z] = texto[z];
+        
+        l = (i / 3)*3;
+        for (int h = l; h < i; h++)
+            result[h] = texto[h];
     }
 
-    for (int l = 1; l < i; l+=3){
-        result[l] = texto[l];
-    }
+    printf("%s\n", result);    
 
-    fprintf(texto_decifrado, "%s\n", result);
+    fprintf(texto_decifrado, "%s", result);
     
     fclose(texto_cifrado);
     fclose(texto_decifrado);

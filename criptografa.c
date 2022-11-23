@@ -52,22 +52,67 @@ int main(int argc, char * argv[]){
         i++;
     };
 
+    int u, l;
     // Criptografando
-    for (int l = 0; l < i; l+=3){
-        if(texto[l] < 126 && texto[l] >= 33){
-            result[l] = texto[l+2];
-            result[l+2] = texto[l];
-        } else {
-            result[l] = texto[l];
-            result[l+2] = texto[l+2];
-        } 
+    if(i%3==0){
+        u = i-1;
+
+        for (l = 0; l < i; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+        for (int z = 1; z < u; z+=3){
+            result[z] = texto[z];
+        }
+    }
+    else if(i%3==1){
+        u = i-2;
+
+        for (l = 0; l < u; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+
+        for (int z = 1; z < u; z+=3)
+            result[z] = texto[z];
+
+        l = (i / 3) * 3;
+        for (int h = l; h < i; h++)
+            result[h] = texto[h];
+        
+    }
+    else{ 
+        u = i-3;
+        for (l = 0; l < u; l+=3){
+            if(texto[l] < 126 && texto[l] >= 32){
+                result[l] = texto[l+2];
+                result[l+2] = texto[l];
+            } else {
+                result[l] = texto[l];
+                result[l+2] = texto[l+2];
+            } 
+        }
+        for (int z = 1; z < u; z+=3)
+            result[z] = texto[z];
+        
+        l = (i / 3)*3;
+        for (int h = l; h < i; h++)
+            result[h] = texto[h];
     }
 
-    for (int l = 1; l < i; l+=3){
-        result[l] = texto[l];
-    }
+    printf("%s\n", result);
 
-    fprintf(texto_cifrado, "%s\n", result);
+    fprintf(texto_cifrado, "%s", result);
 
     fclose(texto_claro);
     fclose(texto_cifrado);
