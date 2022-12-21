@@ -110,9 +110,7 @@ int main(int argc, char * argv[]){
         l = (i / 3)*3;
         for (int h = l; h < i; h++)
             result[h] = texto[h];
-    }
-
-    printf("%s\n", result);    
+    } 
 
     fprintf(texto_decifrado, "%s", result);
     

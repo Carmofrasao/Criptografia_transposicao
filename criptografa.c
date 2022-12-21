@@ -110,8 +110,6 @@ int main(int argc, char * argv[]){
             result[h] = texto[h];
     }
 
-    printf("%s\n", result);
-
     fprintf(texto_cifrado, "%s", result);
 
     fclose(texto_claro);
