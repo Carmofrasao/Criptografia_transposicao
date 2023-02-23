@@ -8,9 +8,9 @@ criptografa:  criptografa.o
 decriptografa: decriptografa.o
 
 clean:
-	@rm -f decriptografa.o criptografa.o
+	rm -f decriptografa.o criptografa.o
 
 purge: clean
-	@rm -f criptografa decriptografa
+	rm -f criptografa decriptografa
 
 run: clean purge all
