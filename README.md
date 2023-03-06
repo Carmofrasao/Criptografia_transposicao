@@ -13,11 +13,11 @@ Para ultilizar o programa, execute o comando make no terminal (dentro da pasta e
 
 ou
 
-> ./criptografa -e <arquivo de entrada> -s <arquivo de saida>
+> ./criptografa -e < arquivo de entrada > -s < arquivo de saida >
 
 
 > ./decriptografa
 
 ou
 
-> ./decriptografa -e <arquivo de entrada> -s <arquivo de saida>
+> ./decriptografa -e < arquivo de entrada > -s < arquivo de saida >
